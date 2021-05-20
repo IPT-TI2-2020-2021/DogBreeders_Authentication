@@ -6,9 +6,11 @@
 
 <h1>Photo of our dogs</h1>
 
+@if (User.Identity.IsAuthenticated) {
 <p>
    <a asp-action="Create">Create New Photo</a>
 </p>
+ }
 
 <table class="table">
    <thead>
@@ -23,42 +25,42 @@
             @Html.DisplayNameFor(model => model.Date)
          </th>
          <th>
-           Dogs' Breed
+            Dogs' Breed
          </th>
          <th></th>
       </tr>
    </thead>
    <tbody>
       @foreach (var item in Model) {
-      <tr>
-         <td>
-            @* @Html.DisplayFor(modelItem => item.NameOfPhoto)    *@
-            @*
-         <img src="~/fotos/@Html.DisplayFor(modelItem => item.NameOfPhoto)" />
-         <img src="~/fotos/@item.NameOfPhoto" />
-            *@
-            <a href="~/fotos/@item.NameOfPhoto" target="_blank">
-               <img src="~/fotos/@item.NameOfPhoto"
-                    alt="photo of @item.Dog.Name"
-                    title="@item.Dog.Name"
-                    height="50" />
-            </a>
-         </td>
-         <td>
-            @Html.DisplayFor(model => item.Dog.Name)
-         </td>
-         <td>
-            @Html.DisplayFor(modelItem => item.Date)
-         </td>
-         <td>
-            @Html.DisplayFor(modelItem => item.Dog.Breed.Name)
-         </td>
-         <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-         </td>
-      </tr>
+         <tr>
+            <td>
+               @* @Html.DisplayFor(modelItem => item.NameOfPhoto)    *@
+               @*
+                  <img src="~/fotos/@Html.DisplayFor(modelItem => item.NameOfPhoto)" />
+                  <img src="~/fotos/@item.NameOfPhoto" />
+               *@
+               <a href="~/fotos/@item.NameOfPhoto" target="_blank">
+                  <img src="~/fotos/@item.NameOfPhoto"
+                       alt="photo of @item.Dog.Name"
+                       title="@item.Dog.Name"
+                       height="50" />
+               </a>
+            </td>
+            <td>
+               @Html.DisplayFor(model => item.Dog.Name)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.Dog.Breed.Name)
+            </td>
+            <td>
+               <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+               <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+               <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+         </tr>
       }
    </tbody>
 </table>

@@ -10,11 +10,17 @@ using DogBreeders.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DogBreeders.Controllers {
+
+
+
    /// <summary>
    /// Controller to work with the Photos of dogs
    /// </summary>
+   [Authorize]  // force that sone to access to controllers action
+                // must ne authenticated
    public class PhotosController : Controller {
 
       /// <summary>
@@ -40,6 +46,9 @@ namespace DogBreeders.Controllers {
       /// Method to process the Index requests
       /// </summary>
       /// <returns></returns>
+ 
+      [AllowAnonymous] // this annotation, as it says, allows people to see the data
+                       // controled by ths Action
       public async Task<IActionResult> Index() {
 
          /* 
@@ -165,7 +174,7 @@ namespace DogBreeders.Controllers {
 
       // GET: Photos/Edit/5
       public async Task<IActionResult> Edit(int? id) {
-        // evaluate if the user specifies the ID of the photo that shoud be edited
+         // evaluate if the user specifies the ID of the photo that shoud be edited
          if (id == null) {
             return NotFound();
          }

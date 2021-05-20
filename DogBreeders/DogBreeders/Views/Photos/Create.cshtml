@@ -1,0 +1,62 @@
+﻿@model DogBreeders.Models.Photos
+
+@{
+   ViewData["Title"] = "Create";
+}
+
+<h1>Add a new photo for a dog</h1>
+
+<hr />
+<div class="row">
+   <div class="col-md-4">
+      <form asp-action="Create" method="post"  enctype="multipart/form-data"   >
+
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+         <div class="form-group">
+            <label asp-for="NameOfPhoto" class="control-label"></label>
+            @* we don't need any more this tag
+               <input asp-for="NameOfPhoto" class="form-control" />
+            *@
+            <input type="file"
+                   name="photoOfDog"
+                   accept=".jpg,.png"
+                   style="color:blue;" />
+
+            <span asp-validation-for="NameOfPhoto" class="text-danger"></span>
+         </div>
+
+         <div class="form-group">
+            <label asp-for="Date" class="control-label"></label>
+            <input type="date" asp-for="Date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+         </div>
+
+         <div class="form-group">
+            <label class="control-label">Local</label>
+            <input placeholder="@Html.DisplayNameFor(model=>model.Local)" asp-for="Local" class="form-control" />
+            <span asp-validation-for="Local" class="text-danger"></span>
+         </div>
+
+         <div class="form-group">
+            <label asp-for="DogFK" class="control-label"></label>
+            <select asp-for="DogFK" class="form-control" asp-items="ViewBag.Dogs">
+               <option>Please, select a dog...</option>
+            </select>
+            <span asp-validation-for="DogFK" class="text-danger"></span>
+         </div>
+
+         <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+         </div>
+      </form>
+   </div>
+</div>
+
+<div>
+   <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+   @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

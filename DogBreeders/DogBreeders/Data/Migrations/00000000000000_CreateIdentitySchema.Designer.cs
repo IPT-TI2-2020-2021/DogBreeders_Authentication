@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 
 namespace DogBreeders.Data.Migrations {
-   [DbContext(typeof(ApplicationDbContext))]
+   [DbContext(typeof(DogBreedersDB))]
    [Migration("00000000000000_CreateIdentitySchema")]
    partial class CreateIdentitySchema {
       protected override void BuildTargetModel(ModelBuilder modelBuilder) {

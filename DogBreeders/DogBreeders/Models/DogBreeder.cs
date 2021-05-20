@@ -65,7 +65,14 @@ namespace DogBreeders.Models {
       // https://www.regular-expressions.info/
 
 
+      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
+      /// <summary>
+      /// a special Foreign Key to connect DogBreeders with Authentication process
+      /// </summary>
+      public string UserNameId { get; set; }
+
+      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
       //**********************************************************
       // List of DogBreedersDogs
